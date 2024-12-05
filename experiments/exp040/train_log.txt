@@ -1,0 +1,312 @@
+========================================================================================================
+Experiment: exp040
+Checkpoint path: experiments/exp040/checkpoint.pth
+
+######################### Model architecture #########################
+MobileNet(
+  (quant): QuantStub()
+  (dequant): DeQuantStub()
+  (conv1): Sequential(
+    (0): Conv2d(2, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (conv2): DepthwiseSeparableConv(
+    (depthwise): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
+    (pointwise): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv3): DepthwiseSeparableConv(
+    (depthwise): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=64, bias=False)
+    (pointwise): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv4): DepthwiseSeparableConv(
+    (depthwise): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128, bias=False)
+    (pointwise): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv5): DepthwiseSeparableConv(
+    (depthwise): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=128, bias=False)
+    (pointwise): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv6): DepthwiseSeparableConv(
+    (depthwise): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+    (pointwise): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv7): DepthwiseSeparableConv(
+    (depthwise): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=256, bias=False)
+    (pointwise): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv8): Sequential(
+    (0): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (1): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (2): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (3): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (4): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (conv9): DepthwiseSeparableConv(
+    (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=512, bias=False)
+    (pointwise): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv10): DepthwiseSeparableConv(
+    (depthwise): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024, bias=False)
+    (pointwise): Conv2d(1024, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=1)
+  (fc): Linear(in_features=1024, out_features=10, bias=True)
+)
+Total number of paramters in the model: 3195114
+Quantised model: True
+
+################### Model successfully initialised ###################
+
+################## Setting up training components ##################
+Number of classes: 10
+Model quantised: True
+Device: (CPU)
+12th Gen Intel(R) Core(TM) i5-12600KF
+Number of epochs: 25
+Criteria: CrossEntropyLoss()
+Optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0
+)
+Scheduler: <torch.optim.lr_scheduler.ReduceLROnPlateau object at 0x000001847C205180>
+Patience: 7
+
+################## Training components set up successfully ##################
+
+############################## Data loading ##############################
+Train set path: data/nmnist/Plain/Plain_1FramePerEventSet_train_dataset.pth
+Valid set path: data/nmnist/Plain/Plain_1FramePerEventSet_valid_dataset.pth
+Test set path: data/nmnist/Plain/Plain_1FramePerEventSet_test_dataset.pth
+Total number of samples in train_loader: 10000
+Total number of samples in valid_loader: 10000
+Total number of samples in test_loader: 10000
+
+######################### Data loaded successfully #########################
+
+################################## checkpoint info ##################################
+No checkpoint found at experiments/exp040/checkpoint.pth. Starting training from scratch.
+
+#####################################################################################
+
+############################## Training started ##############################
+Model saved at epoch 1 with validation loss 51507.5281.
+Epoch 1/25, Train Loss: 2.8079, Train Acc: 14.27%, Valid Loss: 51507.5281, Valid Acc: 17.52%, Test Loss: 1854836.9511, Test Acc: 16.07%, Train Time: 51.12s
+Model saved at epoch 2 with validation loss 43.2400.
+Epoch 2/25, Train Loss: 8174.5644, Train Acc: 9.92%, Valid Loss: 43.2400, Valid Acc: 15.70%, Test Loss: 58.6240, Test Acc: 12.39%, Train Time: 45.03s
+Model saved at epoch 3 with validation loss 2.3211.
+Epoch 3/25, Train Loss: 7.3421, Train Acc: 15.66%, Valid Loss: 2.3211, Valid Acc: 20.78%, Test Loss: 2.8498, Test Acc: 20.48%, Train Time: 49.62s
+Model saved at epoch 4 with validation loss 1.9818.
+Epoch 4/25, Train Loss: 2.0441, Train Acc: 23.04%, Valid Loss: 1.9818, Valid Acc: 23.92%, Test Loss: 2.1627, Test Acc: 24.54%, Train Time: 49.60s
+Model saved at epoch 5 with validation loss 1.8598.
+Epoch 5/25, Train Loss: 1.8789, Train Acc: 25.65%, Valid Loss: 1.8598, Valid Acc: 25.69%, Test Loss: 1.9654, Test Acc: 27.80%, Train Time: 49.16s
+Model saved at epoch 6 with validation loss 1.8084.
+Epoch 6/25, Train Loss: 1.8044, Train Acc: 27.84%, Valid Loss: 1.8084, Valid Acc: 28.35%, Test Loss: 1.8866, Test Acc: 30.24%, Train Time: 51.37s
+Model saved at epoch 7 with validation loss 1.7727.
+Epoch 7/25, Train Loss: 1.7669, Train Acc: 29.33%, Valid Loss: 1.7727, Valid Acc: 30.05%, Test Loss: 1.8321, Test Acc: 32.25%, Train Time: 51.55s
+Model saved at epoch 8 with validation loss 1.7459.
+Epoch 8/25, Train Loss: 1.7339, Train Acc: 31.68%, Valid Loss: 1.7459, Valid Acc: 32.19%, Test Loss: 1.7819, Test Acc: 34.76%, Train Time: 51.58s
+Model saved at epoch 9 with validation loss 1.7192.
+Epoch 9/25, Train Loss: 1.7017, Train Acc: 33.76%, Valid Loss: 1.7192, Valid Acc: 34.08%, Test Loss: 1.7700, Test Acc: 36.38%, Train Time: 51.40s
+Model saved at epoch 10 with validation loss 1.6860.
+Epoch 10/25, Train Loss: 1.6697, Train Acc: 35.53%, Valid Loss: 1.6860, Valid Acc: 36.48%, Test Loss: 1.7149, Test Acc: 38.76%, Train Time: 51.95s
+Model saved at epoch 11 with validation loss 1.6559.
+Epoch 11/25, Train Loss: 1.6464, Train Acc: 37.58%, Valid Loss: 1.6559, Valid Acc: 38.05%, Test Loss: 1.6829, Test Acc: 39.56%, Train Time: 50.99s
+Model saved at epoch 12 with validation loss 1.6275.
+Epoch 12/25, Train Loss: 1.6214, Train Acc: 39.14%, Valid Loss: 1.6275, Valid Acc: 40.12%, Test Loss: 1.6404, Test Acc: 41.32%, Train Time: 51.76s
+Model saved at epoch 13 with validation loss 1.5977.
+Epoch 13/25, Train Loss: 1.5837, Train Acc: 40.87%, Valid Loss: 1.5977, Valid Acc: 42.24%, Test Loss: 1.6062, Test Acc: 42.75%, Train Time: 50.58s
+Model saved at epoch 14 with validation loss 1.5781.
+Epoch 14/25, Train Loss: 1.5550, Train Acc: 43.64%, Valid Loss: 1.5781, Valid Acc: 43.82%, Test Loss: 1.6210, Test Acc: 43.60%, Train Time: 52.27s
+Model saved at epoch 15 with validation loss 1.5545.
+Epoch 15/25, Train Loss: 1.5144, Train Acc: 45.30%, Valid Loss: 1.5545, Valid Acc: 44.24%, Test Loss: 1.6459, Test Acc: 42.63%, Train Time: 50.75s
+Model saved at epoch 16 with validation loss 1.4715.
+Epoch 16/25, Train Loss: 1.4699, Train Acc: 47.80%, Valid Loss: 1.4715, Valid Acc: 49.05%, Test Loss: 1.4918, Test Acc: 48.60%, Train Time: 52.11s
+Model saved at epoch 17 with validation loss 1.4117.
+Epoch 17/25, Train Loss: 1.4151, Train Acc: 49.46%, Valid Loss: 1.4117, Valid Acc: 50.64%, Test Loss: 1.4770, Test Acc: 50.66%, Train Time: 50.24s
+Model saved at epoch 18 with validation loss 1.3483.
+Epoch 18/25, Train Loss: 1.3426, Train Acc: 52.12%, Valid Loss: 1.3483, Valid Acc: 52.45%, Test Loss: 1.3776, Test Acc: 53.58%, Train Time: 51.86s
+Model saved at epoch 19 with validation loss 1.3006.
+Epoch 19/25, Train Loss: 1.2689, Train Acc: 54.41%, Valid Loss: 1.3006, Valid Acc: 53.72%, Test Loss: 1.3421, Test Acc: 54.03%, Train Time: 49.86s
+Model saved at epoch 20 with validation loss 1.2133.
+Epoch 20/25, Train Loss: 1.1899, Train Acc: 57.56%, Valid Loss: 1.2133, Valid Acc: 57.05%, Test Loss: 1.2825, Test Acc: 57.38%, Train Time: 51.91s
+Model saved at epoch 21 with validation loss 1.1211.
+Epoch 21/25, Train Loss: 1.1144, Train Acc: 60.68%, Valid Loss: 1.1211, Valid Acc: 61.16%, Test Loss: 1.1819, Test Acc: 60.55%, Train Time: 50.00s
+Model saved at epoch 22 with validation loss 1.0358.
+Epoch 22/25, Train Loss: 1.0203, Train Acc: 64.49%, Valid Loss: 1.0358, Valid Acc: 65.57%, Test Loss: 1.1271, Test Acc: 63.87%, Train Time: 51.59s
+Model saved at epoch 23 with validation loss 0.9727.
+Epoch 23/25, Train Loss: 0.9477, Train Acc: 68.10%, Valid Loss: 0.9727, Valid Acc: 69.10%, Test Loss: 1.1100, Test Acc: 66.93%, Train Time: 60.37s
+Model saved at epoch 24 with validation loss 0.8990.
+Epoch 24/25, Train Loss: 0.8691, Train Acc: 71.79%, Valid Loss: 0.8990, Valid Acc: 70.42%, Test Loss: 1.1137, Test Acc: 67.08%, Train Time: 53.01s
+Model saved at epoch 25 with validation loss 0.8467.
+Epoch 25/25, Train Loss: 0.7876, Train Acc: 75.15%, Valid Loss: 0.8467, Valid Acc: 73.42%, Test Loss: 0.9767, Test Acc: 74.18%, Train Time: 51.21s
+Loaded the best model state based on validation loss.
+
+        ############### Training completed in 1280.90s. ###############
+        Average time per epoch: 51.24s.
+        Trained for 25/25 epochs.
+        ##############################################################
+        
+
+############################## Training completed ##############################
+========================================================================================================
+
+!---------------------------- Quantised model saved to: experiments\exp040\quantised_model.pth ----------------------------!
+scale=0.10375652462244034
+zero_point=10
+!-------------------------------------------------------------------------------------------------------------------------!
+
+Model quantised:
+MobileNet(
+  (quant): Quantize(scale=tensor([0.1038]), zero_point=tensor([10]), dtype=torch.quint8)
+  (dequant): DeQuantize()
+  (conv1): Sequential(
+    (0): QuantizedConv2d(2, 32, kernel_size=(3, 3), stride=(2, 2), scale=0.1289243847131729, zero_point=68, padding=(1, 1), bias=False)
+    (1): QuantizedBatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (conv2): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), scale=0.16029399633407593, zero_point=70, padding=(1, 1), groups=32, bias=False)
+    (pointwise): QuantizedConv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), scale=0.08924110233783722, zero_point=59, bias=False)
+  )
+  (conv3): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), scale=0.059481747448444366, zero_point=69, padding=(1, 1), groups=64, bias=False)
+    (pointwise): QuantizedConv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), scale=0.03952355310320854, zero_point=64, bias=False)
+  )
+  (conv4): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), scale=0.02178170531988144, zero_point=63, padding=(1, 1), groups=128, bias=False)
+    (pointwise): QuantizedConv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), scale=0.020398568361997604, zero_point=59, bias=False)
+  )
+  (conv5): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), scale=0.012642794288694859, zero_point=61, padding=(1, 1), groups=128, bias=False)
+    (pointwise): QuantizedConv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), scale=0.012676374986767769, zero_point=59, bias=False)
+  )
+  (conv6): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), scale=0.005850307643413544, zero_point=64, padding=(1, 1), groups=256, bias=False)
+    (pointwise): QuantizedConv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), scale=0.01091988105326891, zero_point=68, bias=False)
+  )
+  (conv7): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), scale=0.005868431646376848, zero_point=61, padding=(1, 1), groups=256, bias=False)
+    (pointwise): QuantizedConv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.008278992027044296, zero_point=62, bias=False)
+  )
+  (conv8): Sequential(
+    (0): DepthwiseSeparableConv(
+      (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), scale=0.0036268834955990314, zero_point=68, padding=(1, 1), groups=512, bias=False)
+      (pointwise): QuantizedConv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.005913306027650833, zero_point=64, bias=False)
+    )
+    (1): DepthwiseSeparableConv(
+      (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), scale=0.004051018971949816, zero_point=62, padding=(1, 1), groups=512, bias=False)
+      (pointwise): QuantizedConv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.011405291967093945, zero_point=71, bias=False)
+    )
+    (2): DepthwiseSeparableConv(
+      (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), scale=0.007984066382050514, zero_point=75, padding=(1, 1), groups=512, bias=False)
+      (pointwise): QuantizedConv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.01512110885232687, zero_point=63, bias=False)
+    )
+    (3): DepthwiseSeparableConv(
+      (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), scale=0.00865876767784357, zero_point=62, padding=(1, 1), groups=512, bias=False)
+      (pointwise): QuantizedConv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.02497640624642372, zero_point=62, bias=False)
+    )
+    (4): DepthwiseSeparableConv(
+      (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), scale=0.013601456768810749, zero_point=64, padding=(1, 1), groups=512, bias=False)
+      (pointwise): QuantizedConv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), scale=0.03510491922497749, zero_point=61, bias=False)
+    )
+  )
+  (conv9): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), scale=0.016250956803560257, zero_point=67, padding=(1, 1), groups=512, bias=False)
+    (pointwise): QuantizedConv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), scale=0.09264354407787323, zero_point=62, bias=False)
+  )
+  (conv10): DepthwiseSeparableConv(
+    (depthwise): QuantizedConv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), scale=0.04783255606889725, zero_point=59, padding=(1, 1), groups=1024, bias=False)
+    (pointwise): QuantizedConv2d(1024, 1024, kernel_size=(1, 1), stride=(1, 1), scale=0.13428965210914612, zero_point=63, bias=False)
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=1)
+  (fc): QuantizedLinear(in_features=1024, out_features=10, scale=0.21479283273220062, zero_point=69, qscheme=torch.per_channel_affine)
+)
+========================================================================================================
+
+######################################### Classification report #########################################
+              precision    recall  f1-score   support
+
+           0     0.7237    0.9143    0.8079       980
+           1     0.8851    0.9639    0.9228      1135
+           2     0.7714    0.8043    0.7875      1032
+           3     0.6012    0.6149    0.6079      1010
+           4     0.7169    0.8921    0.7949       982
+           5     0.7472    0.5897    0.6591       892
+           6     0.8550    0.7756    0.8134       958
+           7     0.8267    0.8123    0.8194      1028
+           8     0.7346    0.5144    0.6051       974
+           9     0.7301    0.6729    0.7004      1009
+
+    accuracy                         0.7601     10000
+   macro avg     0.7592    0.7554    0.7518     10000
+weighted avg     0.7609    0.7601    0.7552     10000
+
+
+##########################################################################################################
+
+############################################# Accuracy score #############################################
+0.7601
+
+##########################################################################################################
+Model is on device: cpu
+
+### Testing - Iteration 1/5 ###
+
+
+Iteration 1 completed: Total examples: 10000, Accuracy: 76.01%
+Inference time for iteration 1: 0 min 30.55 sec
+
+### Testing - Iteration 2/5 ###
+
+
+Iteration 2 completed: Total examples: 10000, Accuracy: 76.01%
+Inference time for iteration 2: 0 min 29.57 sec
+
+### Testing - Iteration 3/5 ###
+
+
+Iteration 3 completed: Total examples: 10000, Accuracy: 76.01%
+Inference time for iteration 3: 0 min 27.69 sec
+
+### Testing - Iteration 4/5 ###
+
+
+Iteration 4 completed: Total examples: 10000, Accuracy: 76.01%
+Inference time for iteration 4: 0 min 28.50 sec
+
+### Testing - Iteration 5/5 ###
+
+
+Iteration 5 completed: Total examples: 10000, Accuracy: 76.01%
+Inference time for iteration 5: 0 min 28.16 sec
+
+Average Inference time over 5 iterations: 0 min 28.89 sec
+
+Average Inference time per sample: 2.89 ms
+
+##################### [Inference time] - Testing completed #####################

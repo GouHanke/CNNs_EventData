@@ -1,0 +1,120 @@
+========================================================================================================
+Experiment: exp041
+Checkpoint path: experiments/exp041/checkpoint.pth
+
+######################### Model architecture #########################
+MobileNet(
+  (quant): QuantStub()
+  (dequant): DeQuantStub()
+  (conv1): Sequential(
+    (0): Conv2d(2, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+  )
+  (conv2): DepthwiseSeparableConv(
+    (depthwise): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
+    (pointwise): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv3): DepthwiseSeparableConv(
+    (depthwise): Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=64, bias=False)
+    (pointwise): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv4): DepthwiseSeparableConv(
+    (depthwise): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128, bias=False)
+    (pointwise): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv5): DepthwiseSeparableConv(
+    (depthwise): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=128, bias=False)
+    (pointwise): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv6): DepthwiseSeparableConv(
+    (depthwise): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256, bias=False)
+    (pointwise): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv7): DepthwiseSeparableConv(
+    (depthwise): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=256, bias=False)
+    (pointwise): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv8): Sequential(
+    (0): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (1): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (2): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (3): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+    (4): DepthwiseSeparableConv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512, bias=False)
+      (pointwise): Conv2d(512, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    )
+  )
+  (conv9): DepthwiseSeparableConv(
+    (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=512, bias=False)
+    (pointwise): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (conv10): DepthwiseSeparableConv(
+    (depthwise): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1024, bias=False)
+    (pointwise): Conv2d(1024, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=1)
+  (fc): Linear(in_features=1024, out_features=10, bias=True)
+)
+Total number of paramters in the model: 3195114
+Quantised model: True
+
+################### Model successfully initialised ###################
+
+################## Setting up training components ##################
+Number of classes: 10
+Model quantised: True
+Device: (CPU)
+12th Gen Intel(R) Core(TM) i5-12600KF
+Number of epochs: 25
+Criteria: CrossEntropyLoss()
+Optimizer: Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.001
+    maximize: False
+    weight_decay: 0
+)
+Scheduler: <torch.optim.lr_scheduler.ReduceLROnPlateau object at 0x000002E25EE05180>
+Patience: 7
+
+################## Training components set up successfully ##################
+
+############################## Data loading ##############################
+Train set path: data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_train_dataset.pth
+Valid set path: data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_valid_dataset.pth
+Test set path: data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_test_dataset.pth
+Total number of samples in train_loader: 50000
+Total number of samples in valid_loader: 10000
+Total number of samples in test_loader: 10000
+
+######################### Data loaded successfully #########################
+
+################################## checkpoint info ##################################
+No checkpoint found at experiments/exp041/checkpoint.pth. Starting training from scratch.
+
+#####################################################################################
+
+############################## Training started ##############################
+Model saved at epoch 1 with validation loss 3348920590.4823.
+Epoch 1/25, Train Loss: 14150932.3885, Train Acc: 10.30%, Valid Loss: 3348920590.4823, Valid Acc: 10.08%, Test Loss: 22092114899846.9531, Test Acc: 10.41%, Train Time: 253.89s
+Model saved at epoch 2 with validation loss 238384.1809.
+Epoch 2/25, Train Loss: 24335232535.0708, Train Acc: 11.65%, Valid Loss: 238384.1809, Valid Acc: 17.10%, Test Loss: 274653.8981, Test Acc: 16.53%, Train Time: 239.66s

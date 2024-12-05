@@ -38,14 +38,14 @@ logger.info(f"Checkpoint path: {checkpoint_path}")
 
 
 logger.info("\n######################### Model architecture #########################")
-from models.cnn_lenet import CNNLeNet, CNNLeNetWithSkip
+from models.cnn_lenet import CNNLeNet, CNNwithSkip
 from models.separable_convolution import SeparableConv_LeNet
-# from models.separable_convolution import MobileNet
+from models.separable_convolution import MobileNet
 
-# model = CNNLeNet(num_classes=1, quantised=False)
-model = CNNLeNetWithSkip(num_classes=1, quantised=False)
-# model = SeparableConv_LeNet(num_classes=1, quantised=Tue)
-# model = MobileNet(num_classes=1, quantised=False)
+# model = CNNLeNet(num_classes=10, quantised=True)
+# model = CNNwithSkip(num_classes=10, quantised=True)
+# model = SeparableConv_LeNet(num_classes=10, quantised=True)
+model = MobileNet(num_classes=10, quantised=True)
 
 logger.info(model)
 # Calculate the number of parameters
@@ -57,7 +57,7 @@ logger.info("\n################### Model successfully initialised ##############
 
 from utils.config_parser import ConfigParser
 from utils.setup import setup_training_components
-train_config = ConfigParser("config/train/train_config_c2.cfg")
+train_config = ConfigParser("config/train/train_config_c10.cfg")
 (num_epochs,
  criteria,
  optimizer,
@@ -72,9 +72,9 @@ logger.info("\n############################## Data loading #####################
 from utils.datasets import get_dataloaders
 # N-CARS
 ## ave - plain
-train_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/train_n_cars_dataset_poolingave_1framepereventset_plain.pth"
-valid_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/valid_n_cars_dataset_poolingave_1framepereventset_plain.pth"
-test_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/test_n_cars_dataset_poolingave_1framepereventset_plain.pth"
+# train_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/train_n_cars_dataset_poolingave_1framepereventset_plain.pth"
+# valid_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/valid_n_cars_dataset_poolingave_1framepereventset_plain.pth"
+# test_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/test_n_cars_dataset_poolingave_1framepereventset_plain.pth"
 
 ## max - plain
 # train_dataset_path = "data/ncars/max_32x32_DATASETS/plain/train_n_cars_dataset_maxpooling_1framepereventset_plain.pth"
@@ -102,10 +102,11 @@ test_dataset_path = "data/ncars/ave_32x32_DATASETS/plain/test_n_cars_dataset_poo
 # train_dataset_path = "data/nmnist/Plain/Plain_1FramePerEventSet_train_dataset.pth"
 # valid_dataset_path = "data/nmnist/Plain/Plain_1FramePerEventSet_valid_dataset.pth"
 # test_dataset_path = "data/nmnist/Plain/Plain_1FramePerEventSet_test_dataset.pth"
+
 ## Plain Binary
-# train_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_train_dataset.pth"
-# valid_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_valid_dataset.pth"
-# test_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_test_dataset.pth"
+train_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_train_dataset.pth"
+valid_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_valid_dataset.pth"
+test_dataset_path = "data/nmnist/Plain_Binary/Plain-Binary_1FramePerEventSet_test_dataset.pth"
 
 batch_size = 32
 (train_dataloader,
