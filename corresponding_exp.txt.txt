@@ -1,0 +1,36 @@
+1-5： CNNLeNet(num_classes=1, quantised=False) 有5个数据集
+
+12-14: CNNLeNet(num_classes=1, quantised=True) 有3个数据集（ave，max）
+	没有做mypadding
+	接下来的只做max的plain和binary
+
+16-17：CNNwithSkip(num_classes=1, quantised=False)
+	
+18-19：CNNwithSkip(num_classes=1, quantised=True)
+	测试集85行x = self.relu2(x2 + x1)出现问题
+
+20-21：SeparableConv_LeNet(num_classes=1, quantised=False)
+
+7-11: SeparableConv_LeNet(num_classes=1, quantised=True) 有5个数据集
+	处理mypadding plain时有差错？50准确率
+
+22-23：MobileNet(num_classes=1, quantised=False)
+
+24-25：MobileNet(num_classes=1, quantised=True)
+	50准确率
+
+
+
+26-27：CNNLeNet(num_classes=10, quantised=False)
+
+28-29：CNNLeNet(num_classes=10, quantised=True)
+
+30-31：CNNwithSkip(num_classes=10, quantised=False)
+	plain准确率低（只有20%）
+
+32-33：CNNwithSkip(num_classes=10, quantised=True)
+	测试集85行x = self.relu2(x2 + x1)出现问题
+
+34-35：SeparableConv_LeNet(num_classes=10, quantised=False)
+
+36-37：SeparableConv_LeNet(num_classes=10, quantised=True)
